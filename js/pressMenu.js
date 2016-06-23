@@ -47,5 +47,62 @@ function documentReady() {
 }
 
 function aggiornaInfo() {
-	
+
+	if ( $('#panoList').hasClass('active') ){
+    $.ajax({
+        method: "POST", 
+        crossDomain: true,
+        url: "php/getPano.php",
+        success: function(response) {
+            console.log("riuscito!");
+            console.log(response);
+            var result = response;
+            $("#stringa_descrittiva").remove();
+            $("#Pannello_descrittivo").append("<div id ='stringa_descrittiva'>Sono una panoramica</div>");
+        },
+        error: function(request,error){
+            console.log(request+":"+error);
+        }
+    });
+    return false;
+	}
+
+	if ( $('#descList').hasClass('active') ){
+    $.ajax({
+        method: "POST", 
+        crossDomain: true,
+        url: "php/getDesc.php",
+        success: function(response) {
+            console.log("riuscito!");
+            console.log(response);
+            var result = response;
+            $("#stringa_descrittiva").remove();
+            $("#Pannello_descrittivo").append("<div id ='stringa_descrittiva'>Sono una descrizione</div>");
+        },
+        error: function(request,error){
+            console.log(request+":"+error);
+        }
+    });
+    return false;
+
+	}
+	if ( $('#specList').hasClass('active') ){
+
+    $.ajax({
+        method: "POST", 
+        crossDomain: true,
+        url: "php/getSpec.php",
+        success: function(response) {
+            console.log("riuscito!");
+            console.log(response);
+            var result = response;
+            $("#stringa_descrittiva").remove();
+            $("#Pannello_descrittivo").append("<div id ='stringa_descrittiva'>Stamo ar top</div>");
+        },
+        error: function(request,error){
+            console.log(request+":"+error);
+        }
+    });
+    return false;
+	}
 }
