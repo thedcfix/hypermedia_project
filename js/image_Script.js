@@ -2,7 +2,7 @@ $("document").ready(function(){
     $.ajax({
         method: "POST", 
         crossDomain: true,
-        url: "php/script.php",
+        url: "php/imageprincipale.php",
         success: function(response) {
             console.log("riuscito!");
             console.log(response);

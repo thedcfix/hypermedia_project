@@ -6,11 +6,9 @@ $("document").ready(function(){
         success: function(response) {
             console.log("riuscito!");
             console.log(response);
-            var result = '<div class="col-sm-4" style="float:left"><a href="iPhone.html"><img src="'+response+'" ></a></div>';
-            for(var i=0; i<100; i++){
-                console.log(result);
-                $("#content").append(result);
-            }
+            //var result = '<div class="col-sm-4" align="center" style="float:left"><a href="iPhone.html"><img src="'+response["Immagine"]+'" ><p>'+response["Nome"]+'</p></a></div>';
+            //console.log(result);
+            $("#content").append(response);
         },
         error: function(request,error){
             console.log(request+":"+error);
