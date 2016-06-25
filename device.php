@@ -54,6 +54,11 @@
         $image_3 = $doc->getElementById('fourth_image');
         $frammento->appendXML($immagine);
         $image_3->appendChild($frammento);
+
+        $pulsante_assistenza = $doc->getElementById('bottone_assistenza');
+        $frammento->appendXML('<a href="#" class="btn btn-primary btn-lg" role="button"><div align="center">Assistenza<br></br><small>Ricevi assistenza per questo dispositivo</small></div></a>');
+        $pulsante_assistenza->appendChild($frammento);
+
     	echo $doc->saveHTML();
     	libxml_clear_errors();
 	}
