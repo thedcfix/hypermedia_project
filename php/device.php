@@ -1,6 +1,4 @@
-<<?php 
-
-	if(isset($_GET['id'])) {
+if(isset($_GET['id'])) {
 		$id = $_GET['id'];
 		$conn = mysqli_connect("localhost", "root", "");
     	mysqli_select_db($conn, "tim");
@@ -17,11 +15,14 @@
     	$frammento->appendXML($row['Nome']);
     	$nome_dispositivo->appendChild($frammento);
 
+    	$prezzo_disp = $doc->getElementById('prezzo');
+    	$frammento->appendXML($row['Prezzo']);
+    	$prezzo_disp->appendChild($frammento);
+
+    	$titoloMenu1 = $doc->getElementById('titoloMenu1');
+    	$frammento->appendXML('Panoramica');
+    	$titoloMenu1->appendChild($frammento);
+
     	echo $doc->saveHTML();
     	libxml_clear_errors();
 	}
-	else{
-		echo "error";
-	}
-
-?>

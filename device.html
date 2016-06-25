@@ -12,7 +12,7 @@
       <script src="js/image_Script.js"></script>
    </head>
    <body>
-      <nav class="navbar navbar-default navbar-fixed-top">
+   <nav class="navbar navbar-default navbar-fixed-top">
          <div class="container-fluid">
             <div class="navbar-header">
                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -38,9 +38,13 @@
          </div>
       </nav>
       <div class="container-fluid">
-         <h6><a href="dispositivi.html">Tutti i dispositivi</a> > <a href="smartphone.html">Smartphone</a></h6>
+               <ul class="breadcrumb">
+                <li><a href="dispositivi.html">Tutti i dispositivi</a></li>
+                <li><a href="smartphone.html">Smartphone</a></li>
+                <li class="active" id="nome_dispositivo"></li>
+            </ul>
          <h2 id="nome_dispositivo"></h2>
-         <div class="row">
+        <div class="row">
             <div class="col-sm-3">
                <div id="myCarousel" class="carousel slide" data-ride="carousel">
                   <!-- Indicators -->
@@ -80,10 +84,9 @@
             </div>
             <div class="col-sm-3">
                <ul class="nav nav-pills nav-stacked">
-                  <li class="active"><a data-toggle="pill" href="#home">Home</a></li>
-                  <li><a data-toggle="pill" href="#menu1">Menu 1</a></li>
-                  <li><a data-toggle="pill" href="#menu2">Menu 2</a></li>
-                  <li><a data-toggle="pill" href="#menu3">Menu 3</a></li>
+                  <li class="active"><a data-toggle="pill" href="#home">Panormaica</a></li>
+                  <li><a data-toggle="pill" href="#menu1">Descrizione</a></li>
+                  <li><a data-toggle="pill" href="#menu2">Specifihce tecniche</a></li>
                </ul>
                <div align="center" id="bottone_assistenza"><br><br></div>
                <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -111,20 +114,16 @@
             <div class="col-sm-6">
                <div class="tab-content">
                   <div id="home" class="tab-pane fade in active">
-                     <h3>HOME</h3>
-                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                     <h3>Panoramica</h3>
+                     <p id="panoramica"></p>
                   </div>
                   <div id="menu1" class="tab-pane fade">
-                     <h3>Menu 1</h3>
-                     <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                     <h3>Descrizione</h3>
+                     <p id="descrizione"></p>
                   </div>
                   <div id="menu2" class="tab-pane fade">
-                     <h3>Menu 2</h3>
-                     <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
-                  </div>
-                  <div id="menu3" class="tab-pane fade">
-                     <h3>Menu 3</h3>
-                     <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                     <h3>Specifiche tecniche</h3>
+                     <p id="specifiche_tecniche"></p>
                   </div>
                </div>
             </div>
@@ -132,4 +131,4 @@
       </div>
       </div>
    </body>
-</html>
+</html

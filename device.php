@@ -1,4 +1,4 @@
-<<?php 
+<?php 
 
 	if(isset($_GET['id'])) {
 		$id = $_GET['id'];
@@ -16,6 +16,22 @@
     	$nome_dispositivo = $doc->getElementById('nome_dispositivo');
     	$frammento->appendXML($row['Nome']);
     	$nome_dispositivo->appendChild($frammento);
+
+        $prezzo_dispositivo = $doc->getElementById('prezzo');
+        $frammento->appendXML($row['Prezzo']);
+        $prezzo_dispositivo->appendChild($frammento);
+
+        $panoramica = $doc->getElementById('panoramica');
+        $frammento->appendXML($row['Panoramica']);
+        $panoramica->appendChild($frammento);
+
+        $descrizione = $doc->getElementById('descrizione');
+        $frammento->appendXML($row['Descrizione']);
+        $descrizione->appendChild($frammento);
+
+        $specifiche_tecniche = $doc->getElementById('specifiche_tecniche');
+        $frammento->appendXML($row['Specifiche']);
+        $specifiche_tecniche->appendChild($frammento);
 
     	echo $doc->saveHTML();
     	libxml_clear_errors();
