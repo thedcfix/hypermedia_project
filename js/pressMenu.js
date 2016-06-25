@@ -1,7 +1,6 @@
 $(document).ready(documentReady);
 
 function documentReady() {
-
 	aggiornaInfo();
 
     $('#desc').click(function(){
@@ -58,7 +57,7 @@ function aggiornaInfo() {
             console.log(response);
             var result = response;
             $("#stringa_descrittiva").remove();
-            $("#Pannello_descrittivo").append("<div id ='stringa_descrittiva'>Sono una panoramica</div>");
+            $("#Pannello_descrittivo").append("<div id ='stringa_descrittiva'>"+result+"</div>");
         },
         error: function(request,error){
             console.log(request+":"+error);
@@ -77,7 +76,7 @@ function aggiornaInfo() {
             console.log(response);
             var result = response;
             $("#stringa_descrittiva").remove();
-            $("#Pannello_descrittivo").append("<div id ='stringa_descrittiva'>Sono una descrizione</div>");
+            $("#Pannello_descrittivo").append("<div id ='stringa_descrittiva'>"+result+"</div>");
         },
         error: function(request,error){
             console.log(request+":"+error);
@@ -97,7 +96,7 @@ function aggiornaInfo() {
             console.log(response);
             var result = response;
             $("#stringa_descrittiva").remove();
-            $("#Pannello_descrittivo").append("<div id ='stringa_descrittiva'>Stamo ar top</div>");
+            $("#Pannello_descrittivo").append("<div id ='stringa_descrittiva'>"+result+"</div>");
         },
         error: function(request,error){
             console.log(request+":"+error);

@@ -8,6 +8,9 @@ $("document").ready(function(){
             console.log(response);
             var result = '<img src="'+response+'">';
             $("#principal_image").append(result);
+            $("#second_image").append(result);
+            $("#third_image").append(result);
+            $("#fourth_image").append(result);
         },
         error: function(request,error){
             console.log(request+":"+error);
