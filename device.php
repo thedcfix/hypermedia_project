@@ -17,6 +17,10 @@
     	$frammento->appendXML($row['Nome']);
     	$nome_dispositivo->appendChild($frammento);
 
+        $nome_dispositivo_b = $doc->getElementById('nome_dispositivo_b');
+        $frammento->appendXML($row['Nome']);
+        $nome_dispositivo_b->appendChild($frammento);
+
         $prezzo_dispositivo = $doc->getElementById('prezzo');
         $frammento->appendXML($row['Prezzo']);
         $prezzo_dispositivo->appendChild($frammento);
@@ -32,6 +36,24 @@
         $specifiche_tecniche = $doc->getElementById('specifiche_tecniche');
         $frammento->appendXML($row['Specifiche']);
         $specifiche_tecniche->appendChild($frammento);
+
+        /*$immagine = <img src="'.$row["Immagine"].'"> da modificare per le 4 diverse
+
+        $image_0 = $doc->getElementById('principal_image');
+        $frammento->appendXML(immagine);
+        $image_0->appendChild($frammento);
+
+        $image_1 = $doc->getElementById('second_image');
+        $frammento->appendXML(immagine);
+        $image_1->appendChild($frammento);
+
+        $image_2 = $doc->getElementById('third_image');
+        $frammento->appendXML(immagine);
+        $image_2->appendChild($frammento);
+
+        $image_3 = $doc->getElementById('fourth_image');
+        $frammento->appendXML(immagine);
+        $image_3->appendChild($frammento);*/ //da implementare devo pensarci
 
     	echo $doc->saveHTML();
     	libxml_clear_errors();
