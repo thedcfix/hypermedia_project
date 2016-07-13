@@ -10,7 +10,7 @@
          height: auto;
          }
       </style>
-      <title>TIM</title>
+      <title id="titolo"></title>
       <!-- Bootstrap -->
       <link href="css/bootstrap.css" rel="stylesheet">
       <script src="js/jquery-1.11.3.min.js"></script>
@@ -46,19 +46,26 @@
          <ul class="breadcrumb" id="breadcrumb">
          </ul>
          <div class="row">
-            <div class="col-sm-3" style="float:left">
+            <div class="col-sm-3 hidden-xs" style="float:left">
                <img class="img-responsive" src="img/assistenza_side.png">
             </div>
             <div class="col-sm-9">
-                  <div class="row">
-                     <div class="col-sm-3">
-                        <div align="center"><img class="img-responsive" src="img/phone_application-15-128.png"></div>
-                        <p align="center" id="linkdispositivo"></p>
-                     </div>
-                     <div id="descrizione_problema" align="center"></div>
-                     <div class = "col-sm-9" id="youtubeVideo">
-                     </div>
+               <div class="row">
+                  <div class="col-sm-3 hidden-xs">
+                     <div align="center"><img class="img-responsive" src="img/phone_application-15-128.png"></div>
+                     <!--Linkassistenza-->
                   </div>
+                  <div id="descrizione_problema" align="center">
+                     <!--Problema-->
+                  </div>
+                  <div class = "col-sm-9" id="youtubeVideo">
+                     <!--Video-->
+                  </div>
+               </div>
+            </div>
+            <div class="col-sm-3 visible-xs">
+               <div align="center"><img class="img-responsive" src="img/phone_application-15-128.png"></div>
+               <!--Linkassistenza-->
             </div>
          </div>
       </div>
