@@ -12,14 +12,14 @@ if (isset($_GET['id']))
         {
         $page = implode("", file("assistenzaDispositivo.html"));
         $stringa = '<p align="center" id="linkdispositivo"><a href = "device_assistenza.html?id=' . $id . '">Dispositivi collegati</a></p>';
-        $final_page = eregi_replace("<!--Linkassistenza-->", $stringa, $page);
+        $final_page = preg_replace("#<!--Linkassistenza-->#", $stringa, $page);
         $stringa = '<div align="center" class="embed-responsive embed-responsive-16by9">
                             <video controls class="embed-responsive-item">
                                 <source src="' . $row["video"] . '" type="video/mp4">
                             </video>
                         </div>';
-        $final_page = eregi_replace("<!--Video-->", $stringa, $final_page);
-        $final_page = eregi_replace("<!--Problema-->", $row["descrizione"], $final_page);
+        $final_page = preg_replace("#<!--Video-->#", $stringa, $final_page);
+        $final_page = preg_replace("#<!--Problema-->#", $row["descrizione"], $final_page);
         echo $final_page;
         }
       else
