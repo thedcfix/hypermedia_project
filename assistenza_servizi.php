@@ -14,8 +14,7 @@
         $frammento =$doc->createDocumentFragment();
 
          while($row = mysqli_fetch_array($res)){
-             $aggiunta = '<div class="col-sm-4" align="center" style="float:left"><a href="assistenza.php?id='.$row["id"].'""><p>'.$row["servizio"].'<br/></p></a></div>';
-             echo $aggiunta;
+             $aggiunta = '<div class="col-sm-4" align="center" style="float:left"><a href="assistance.php?id='.$row["id"].'"><p>'.$row["servizio"].'<br/></p></a></div>';
              // <img src="'.$img["img"].'" style="width:230px; height:230px">
              $frammento->appendXML($aggiunta);
              $elenco_servizi_assistenza->appendChild($frammento);
