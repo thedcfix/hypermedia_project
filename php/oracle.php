@@ -18,7 +18,7 @@ switch ($_POST['method']) {
 
 function dispositiviWithAssistenza($idAssistenza) {
     $conn = mysqli_connect("localhost", "root", "");
-    mysqli_select_db($conn, "tim");
+    mysqli_select_db($conn, "hyp_db");
     $stringa = "select * from AssistenzaDisp where ID = '$idAssistenza'";
     $ris = $conn->query($stringa);
     $row = mysqli_fetch_array($ris);

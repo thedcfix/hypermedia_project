@@ -48,10 +48,14 @@ function breadcrumbs($isLocalHost) {
 	if(isset($_GET['id'])) {
 		$id = $_GET['id'];
 		$conn = mysqli_connect("localhost", "root", "");
-    	mysqli_select_db($conn, "tim");
-    	$stringa = "select * from Prodotti where Nome = '$id'";
+    	mysqli_select_db($conn, "hyp_db");
+    	$stringa = "select * from Prodotti where id = '$id'";
     	$ris = $conn->query($stringa);
     	$row = mysqli_fetch_array($ris);
+        $var = $row['id'];
+        $imma = mysqli_query($conn, "select img from immagini where disp_id = $var");
+        $query = "select * from prodotti_servizi join servizi on prodotti_servizi.id_servizio = servizi.id where id_prodotto = $id ";
+        $servizi = $conn->query($query);
 
     	$doc = new DOMDocument();
     	libxml_use_internal_errors(true);
@@ -65,50 +69,54 @@ function breadcrumbs($isLocalHost) {
         $bread->appendChild($frammento);*/
 
     	$nome_dispositivo = $doc->getElementById('nome_dispositivo');
-    	$frammento->appendXML($row['Nome']);
+    	$frammento->appendXML($row['nome']);
     	$nome_dispositivo->appendChild($frammento);
 
         $nome_dispositivo_b = $doc->getElementById('nome_dispositivo_b');
-        $frammento->appendXML($row['Nome']);
+        $frammento->appendXML($row['nome']);
         $nome_dispositivo_b->appendChild($frammento);
 
         $prezzo_dispositivo = $doc->getElementById('prezzo');
-        $frammento->appendXML($row['Prezzo']);
+        $frammento->appendXML($row['prezzo']);
         $prezzo_dispositivo->appendChild($frammento); 
 
         $panoramica = $doc->getElementById('panoramica');
-        $frammento->appendXML($row['Panoramica']);
+        $frammento->appendXML($row['panoramica']);
         $panoramica->appendChild($frammento);
 
         $descrizione = $doc->getElementById('descrizione');
-        $frammento->appendXML($row['Descrizione']);
+        $frammento->appendXML($row['descrizione']);
         $descrizione->appendChild($frammento);
 
         $specifiche_tecniche = $doc->getElementById('specifiche_tecniche');
-        $frammento->appendXML($row['Specifiche']);
+        $frammento->appendXML($row['specifiche']);
         $specifiche_tecniche->appendChild($frammento);
 
-        $immagine = "<img src ='".$row['Immagine']."'></img>";
-
-        $image_0 = $doc->getElementById('principal_image');
+        $img =  mysqli_fetch_array($imma);
+        $immagine = '<div class="item active" id="principal_image"><img src ="'.$img['img'].'"></img></div>';
+        $image_0 = $doc->getElementById('carosello');
         $frammento->appendXML($immagine);
         $image_0->appendChild($frammento);
 
-        $image_1 = $doc->getElementById('second_image');
-        $frammento->appendXML($immagine);
-        $image_1->appendChild($frammento);
+        for ($i=1; $i < 4; $i++) { 
+            $img =  mysqli_fetch_array($imma);
+            $immagine = '<div class="item"><img src ="'.$img['img'].'"></img></div>';
+            $image_0 = $doc->getElementById('carosello');
+            $frammento->appendXML($immagine);
+            $image_0->appendChild($frammento);
 
-        $image_2 = $doc->getElementById('third_image');
-        $frammento->appendXML($immagine);
-        $image_2->appendChild($frammento);
-
-        $image_3 = $doc->getElementById('fourth_image');
-        $frammento->appendXML($immagine);
-        $image_3->appendChild($frammento);
+        }
 
         $pulsante_assistenza = $doc->getElementById('bottone_assistenza');
         $frammento->appendXML('<a href="#" class="btn btn-primary btn-lg" role="button"><div align="center">Assistenza<br></br><small>Ricevi assistenza per questo dispositivo</small></div></a>');
         $pulsante_assistenza->appendChild($frammento);
+
+        $serv = mysqli_fetch_array($servizi);
+        
+        $immagine = '<div class="item active" id="principal_image"><a href="#"><img src ="'.$serv['img'].'"></img></a></div>';
+        $image_0 = $doc->getElementById('carosello_servizi');
+        $frammento->appendXML($immagine);
+        $image_0->appendChild($frammento);
 
     	echo $doc->saveHTML();
     	libxml_clear_errors();
