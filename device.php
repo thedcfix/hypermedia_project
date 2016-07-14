@@ -98,8 +98,8 @@ function breadcrumbs($isLocalHost) {
         $frammento->appendXML($immagine);
         $image_0->appendChild($frammento);
 
-        for ($i=1; $i < 4; $i++) { 
-            $img =  mysqli_fetch_array($imma);
+        while($img =  mysqli_fetch_array($imma)) { 
+            
             $immagine = '<div class="item"><img src ="'.$img['img'].'"></img></div>';
             $image_0 = $doc->getElementById('carosello');
             $frammento->appendXML($immagine);
