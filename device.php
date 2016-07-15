@@ -62,11 +62,11 @@ function breadcrumbs($isLocalHost) {
     	$doc->loadHTMLFile("device.html");
     	$frammento =$doc->createDocumentFragment();
 
-        /*$try = breadcrumbs(1);
 
-        $bread = $doc->getElementById('breadcrums');
-        $frammento->appendXML($try);
-        $bread->appendChild($frammento);*/
+
+        $bread = $doc->getElementById('categoria');
+        $frammento->appendXML('<a href="products.html?type='.$row['tipologia'].'">'.$row['tipologia'].'</a>');
+        $bread->appendChild($frammento);
 
     	$nome_dispositivo = $doc->getElementById('nome_dispositivo');
     	$frammento->appendXML($row['nome']);
@@ -98,6 +98,13 @@ function breadcrumbs($isLocalHost) {
         $frammento->appendXML($immagine);
         $image_0->appendChild($frammento);
 
+        $int = 0;
+
+        $image_0 = $doc->getElementById('cerchiprimocar');
+        $frammento->appendXML('<li data-target="#myCarousel" data-slide-to="'.$int.'" class="active"></li>');
+        $image_0->appendChild($frammento);
+        $int++;
+
         while($img =  mysqli_fetch_array($imma)) { 
             
             $immagine = '<div class="item"><img src ="'.$img['img'].'"></img></div>';
@@ -105,10 +112,15 @@ function breadcrumbs($isLocalHost) {
             $frammento->appendXML($immagine);
             $image_0->appendChild($frammento);
 
+            $image_0 = $doc->getElementById('cerchiprimocar');
+            $frammento->appendXML(' <li data-target="#myCarousel" data-slide-to="'.$int.'"></li>');
+            $image_0->appendChild($frammento);
+            $int++;
+
         }
 
         $pulsante_assistenza = $doc->getElementById('bottone_assistenza');
-        $frammento->appendXML('<a href="#" class="btn btn-primary btn-lg" role="button"><div align="center">Assistenza<br></br><small>Ricevi assistenza per questo dispositivo</small></div></a>');
+        $frammento->appendXML('<a href="assistenza_servizi.php?category='.$row['categoria'].'" class="btn btn-primary btn-lg" role="button"><div align="center">Assistenza<br></br><small>Ricevi assistenza per questo dispositivo</small></div></a>');
         $pulsante_assistenza->appendChild($frammento);
 
         $serv = mysqli_fetch_array($servizi);
@@ -117,6 +129,15 @@ function breadcrumbs($isLocalHost) {
         $image_0 = $doc->getElementById('carosello_servizi');
         $frammento->appendXML($immagine);
         $image_0->appendChild($frammento);
+
+        while($serv =  mysqli_fetch_array($servizi)) { 
+            
+            $immagine = '<div class="item"><a href="#"><img src ="'.$serv['img'].'"></img></a></div>';
+            $image_0 = $doc->getElementById('carosello_servizi');
+            $frammento->appendXML($immagine);
+            $image_0->appendChild($frammento);
+
+        }
 
     	echo $doc->saveHTML();
     	libxml_clear_errors();

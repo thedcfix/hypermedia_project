@@ -20,8 +20,12 @@
              $elenco_servizi_assistenza->appendChild($frammento);
          }
 
-         echo $doc->saveHTML();
-    	 libxml_clear_errors();
+        $cat = $doc->getElementById('categoria');
+        $frammento->appendXML($category);
+        $cat->appendChild($frammento);
+
+        echo $doc->saveHTML();
+    	libxml_clear_errors();
 	}
 	else{
 		echo "error";

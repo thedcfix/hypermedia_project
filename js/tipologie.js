@@ -2,16 +2,17 @@ $(document).ready(documentReady);
 
 function documentReady() {
 
-var id = getUrlParameter("id");
+var type = getUrlParameter("type");
 var risultato;
 $.ajax({
         method: "POST", 
         crossDomain: true,
         url: "php/oracle.php",
-        data : { id : id , method : 'device_assistance' },
+        data : { type : type , method : 'products_show' },
         success: function(response) {
+            console.log("riuscito!");
             console.log(response);
-            appendAllDevice(response);
+            $("#content").append(response);
         },
         error: function(request,error){
             console.log(request+":"+error);
@@ -33,18 +34,5 @@ function getUrlParameter(sParam) {
             var result = sParameterName[1];
             return result;
         }
-    }
-};
-
-function appendAllDevice(parametro){
-    var nomi = parametro.split(";");
-    console.log(nomi);
-    for(var idDispo of nomi){
-        var device = idDispo.split("-");
-        console.log(device);
-        var id = device[0];
-        var nome = device[1];
-        var stringaToAppend = '<a href="http://localhost/hypermedia_project/device.php?id='+id+'" class="list-group-item">'+nome+'</a>';
-        $('#ListaDispositivi').append(stringaToAppend);
     }
 };
