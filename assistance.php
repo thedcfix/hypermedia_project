@@ -8,6 +8,10 @@ if (isset($_GET['id']))
     $stringa = "select * from assistenza where ID = '$id'";
     $ris = $conn->query($stringa);
     $row = mysqli_fetch_array($ris);
+
+    $views = $row['views'];
+    $record = $row['id'];
+
     if (mysqli_num_rows($ris) > 0)
         {
         $page = implode("", file("assistenzaDispositivo.html"));
@@ -31,5 +35,8 @@ if (isset($_GET['id']))
     {
     echo "error";
     }
+
+    $query = "UPDATE assistenza SET views=$views+1 where id=$record";
+    $conn->query($query);
 
 ?>
