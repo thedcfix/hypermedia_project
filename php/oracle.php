@@ -6,16 +6,28 @@ switch ($_POST['method']) {
         echo $stringa;
         break;
     
-        case 'products_show':
+    case 'products_show':
         $conn = mysqli_connect("localhost", "root", "");
         mysqli_select_db($conn, "hyp_db");
         $res = productsShow($_POST['type'],$conn);
         while($row = mysqli_fetch_array($res)) {
-        $var = $row['id'];
-        $imma = mysqli_query($conn, "select img from immagini where disp_id = $var");
-        $img =  mysqli_fetch_array($imma);
-        echo '<div class="col-sm-4" align="center" style="float:left"><a href="device.php?id='.$row["id"].'""><img src="'.$img["img"].'" style="width:230px; height:230px"><p>'.$row["marca"].'<br/>'.$row["nome"].'</p></a></div>';
-    }
+            $var = $row['id'];
+            $imma = mysqli_query($conn, "select img from immagini where disp_id = $var");
+            $img =  mysqli_fetch_array($imma);
+            echo '<div class="col-sm-4" align="center" style="float:left"><a href="device.php?id='.$row["id"].'""><img src="'.$img["img"].'" style="width:230px; height:230px"><p>'.$row["marca"].'<br/>'.$row["nome"].'</p></a></div>';
+        }
+        break;
+
+    case 'products_show_min_max':
+        $conn = mysqli_connect("localhost", "root", "");
+        mysqli_select_db($conn, "hyp_db");
+        $res = productsShowMinMax($_POST['type'],$conn,$_POST['min'],$_POST['max']);
+        while($row = mysqli_fetch_array($res)) {
+            $var = $row['id'];
+            $imma = mysqli_query($conn, "select img from immagini where disp_id = $var");
+            $img =  mysqli_fetch_array($imma);
+            echo '<div class="col-sm-4" align="center" style="float:left"><a href="device.php?id='.$row["id"].'""><img src="'.$img["img"].'" style="width:230px; height:230px"><p>'.$row["marca"].'<br/>'.$row["nome"].'</p></a></div>';
+        }
         break;
 
     default:
@@ -55,6 +67,22 @@ function productsShow($type,$conn) {
     }
     else {
         $res = mysqli_query($conn, "select * from prodotti where outlet order by Prezzo DESC");
+    }
+    return $res;
+
+}
+ 
+?>
+
+<?php
+
+
+function productsShowMinMax($type,$conn,$min,$max) {
+    if($type != 'Outlet') {
+        $res = mysqli_query($conn, "select * from prodotti where tipologia = '$type' && prezzo < $max && prezzo > $min order by Prezzo DESC");
+    }
+    else {
+        $res = mysqli_query($conn, "select * from prodotti where outlet && prezzo < $max && prezzo > $min order by Prezzo DESC");
     }
     return $res;
 
