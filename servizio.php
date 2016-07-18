@@ -25,7 +25,7 @@ if (isset($_GET['id'])) {
     $frammento->appendXML($row['nome']);
     $bread->appendChild($frammento);
     $img = $doc->getElementById('immagine');
-    $frammento->appendXML('<img src="'.$row["img"].'"></img><br/>');
+    $frammento->appendXML('<img src="'.$row["img"].'" class="img-responsive"></img><br/>');
     $img->appendChild($frammento);
 
     // dà problemi se le cose prese dal db hanno lettere accentate
