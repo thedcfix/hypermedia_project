@@ -7,7 +7,7 @@ var risultato;
 $.ajax({
         method: "POST", 
         crossDomain: true,
-        url: "php/oracle.php",
+        url: "http://reyze.altervista.org/php/oracle.php",
         data : { id : id , method : 'device_assistance' },
         success: function(response) {
             console.log(response);
@@ -44,7 +44,7 @@ function appendAllDevice(parametro){
         console.log(device);
         var id = device[0];
         var nome = device[1];
-        var stringaToAppend = '<a href="http://localhost/hypermedia_project/device.php?id='+id+'" class="list-group-item">'+nome+'</a>';
+        var stringaToAppend = '<a href="http://reyze.altervista.org/device.php?id='+id+'" class="list-group-item">'+nome+'</a>';
         $('#ListaDispositivi').append(stringaToAppend);
     }
 };

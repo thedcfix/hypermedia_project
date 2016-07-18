@@ -8,25 +8,25 @@ switch ($_POST['method']) {
     
     case 'products_show':
         $conn = mysqli_connect("localhost", "root", "");
-        mysqli_select_db($conn, "hyp_db");
+        mysqli_select_db($conn, "my_reyze");
         $res = productsShow($_POST['type'],$conn);
         while($row = mysqli_fetch_array($res)) {
             $var = $row['id'];
             $imma = mysqli_query($conn, "select img from immagini where disp_id = $var");
             $img =  mysqli_fetch_array($imma);
-            echo '<div class="col-sm-4" align="center" style="float:left"><a href="device.php?id='.$row["id"].'""><img src="'.$img["img"].'" style="width:230px; height:230px"><p>'.$row["marca"].'<br/>'.$row["nome"].'</p></a></div>';
+            echo '<div class="col-sm-4" align="center" style="float:left"><a href="http://reyze.altervista.org/device.php?id='.$row["id"].'""><img src="'.$img["img"].'" style="width:230px; height:230px"><p>'.$row["marca"].'<br/>'.$row["nome"].'</p></a></div>';
         }
         break;
 
     case 'products_show_min_max':
         $conn = mysqli_connect("localhost", "root", "");
-        mysqli_select_db($conn, "hyp_db");
+        mysqli_select_db($conn, "my_reyze");
         $res = productsShowMinMax($_POST['type'],$conn,$_POST['min'],$_POST['max']);
         while($row = mysqli_fetch_array($res)) {
             $var = $row['id'];
             $imma = mysqli_query($conn, "select img from immagini where disp_id = $var");
             $img =  mysqli_fetch_array($imma);
-            echo '<div class="col-sm-4" align="center" style="float:left"><a href="device.php?id='.$row["id"].'""><img src="'.$img["img"].'" style="width:230px; height:230px"><p>'.$row["marca"].'<br/>'.$row["nome"].'</p></a></div>';
+            echo '<div class="col-sm-4" align="center" style="float:left"><a href="http://reyze.altervista.org/device.php?id='.$row["id"].'""><img src="'.$img["img"].'" style="width:230px; height:230px"><p>'.$row["marca"].'<br/>'.$row["nome"].'</p></a></div>';
         }
         break;
 
@@ -42,7 +42,7 @@ switch ($_POST['method']) {
 
 function dispositiviWithAssistenza($idAssistenza) {
     $conn = mysqli_connect("localhost", "root", "");
-    mysqli_select_db($conn, "hyp_db");
+    mysqli_select_db($conn, "my_reyze");
     $stringa = "select id_prodotto, nome from prodotti_assistenza join prodotti on prodotti_assistenza.id_prodotto = prodotti.id where id_assistenza = '$idAssistenza'";
     $ris = $conn->query($stringa);
     $dispo = array();

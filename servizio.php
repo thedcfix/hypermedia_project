@@ -3,7 +3,7 @@
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
     $conn = mysqli_connect("localhost", "root", "");
-    mysqli_select_db($conn, "hyp_db");
+    mysqli_select_db($conn, "my_reyze");
     $stringa = "select * from servizi where id = $id";
     $ris = $conn->query($stringa);
     $row = mysqli_fetch_array($ris);
@@ -18,7 +18,7 @@ if (isset($_GET['id'])) {
         $frammento->appendXML('<a href="casafamiglia.html">Casa e famiglia</a>');
     }
     else{
-        $frammento->appendXML('<a href="servizio_categoria.php?category=' . $row['categoria'] . '">' . $row['categoria'] . '</a>');
+        $frammento->appendXML('<a href="http://reyze.altervista.org/servizio_categoria.php?category=' . $row['categoria'] . '">' . $row['categoria'] . '</a>');
     }
     $bread->appendChild($frammento);
     $bread = $doc->getElementById('servizio_attuale');
@@ -50,7 +50,7 @@ if (isset($_GET['id'])) {
 
     if($repl){
         $img = mysqli_fetch_array($repl);
-        $immagine = '<div class="item active" id="principal_image"><a href="device.php?id=' . $idProd . '"><img src ="' . $img['img'] . '" style="width: 45%; height: 45%"></img></a></div>';
+        $immagine = '<div class="item active" id="principal_image"><a href="http://reyze.altervista.org/device.php?id=' . $idProd . '"><img src ="' . $img['img'] . '" style="width: 45%; height: 45%"></img></a></div>';
         $image_0 = $doc->getElementById('dispositivi');
         $frammento->appendXML($immagine);
         $image_0->appendChild($frammento);
@@ -59,7 +59,7 @@ if (isset($_GET['id'])) {
             $im = "select img from immagini where disp_id = $idProd";
             $repl = $conn->query($im);
             $img = mysqli_fetch_array($repl);
-            $immagine = '<div class="item"><a href="device.php?id=' . $idProd . '"><img src ="' . $img['img'] . '" style="width: 45%; height: 45%"></img></a></div>';
+            $immagine = '<div class="item"><a href="http://reyze.altervista.org/device.php?id=' . $idProd . '"><img src ="' . $img['img'] . '" style="width: 45%; height: 45%"></img></a></div>';
             $image_0 = $doc->getElementById('dispositivi');
             $frammento->appendXML($immagine);
             $image_0->appendChild($frammento);

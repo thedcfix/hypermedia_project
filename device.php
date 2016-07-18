@@ -1,3 +1,4 @@
+
 <?php
 /*
 // 1 se è eseguito in localhost 0 altrimenti.
@@ -48,8 +49,8 @@ function breadcrumbs($isLocalHost) {
 	if(isset($_GET['id'])) {
 		$id = $_GET['id'];
 		$conn = mysqli_connect("localhost", "root", "");
-    	mysqli_select_db($conn, "hyp_db");
-    	$stringa = "select * from Prodotti where id = '$id'";
+    	mysqli_select_db($conn, "my_reyze");
+    	$stringa = "select * from prodotti where id = '$id'";
     	$ris = $conn->query($stringa);
     	$row = mysqli_fetch_array($ris);
         $var = $row['id'];
@@ -120,19 +121,19 @@ function breadcrumbs($isLocalHost) {
         }
 
         $pulsante_assistenza = $doc->getElementById('bottone_assistenza');
-        $frammento->appendXML('<a href="assistenza_servizi.php?category='.$row['categoria'].'" class="btn btn-primary btn-lg" role="button"><div align="center">Assistenza<br></br><small>Ricevi assistenza per questo dispositivo</small></div></a>');
+        $frammento->appendXML('<a href="http://reyze.altervista.org/assistenza_servizi.php?category='.$row['categoria'].'" class="btn btn-primary btn-lg" role="button"><div align="center">Assistenza<br></br><small>Ricevi assistenza per questo dispositivo</small></div></a>');
         $pulsante_assistenza->appendChild($frammento);
 
         $serv = mysqli_fetch_array($servizi);
         
-        $immagine = '<div class="item active" id="principal_image"><a href="servizio.php?id='.$serv['id'].'"><img src ="'.$serv['img'].'"></img></a></div>';
+        $immagine = '<div class="item active" id="principal_image"><a href="http://reyze.altervista.org/servizio.php?id='.$serv['id'].'"><img src ="'.$serv['img'].'"></img></a></div>';
         $image_0 = $doc->getElementById('carosello_servizi');
         $frammento->appendXML($immagine);
         $image_0->appendChild($frammento);
 
         while($serv =  mysqli_fetch_array($servizi)) { 
             
-            $immagine = '<div class="item"><a href="servizio.php?id='.$serv['id'].'"><img src ="'.$serv['img'].'"></img></a></div>';
+            $immagine = '<div class="item"><a href="http://reyze.altervista.org/servizio.php?id='.$serv['id'].'"><img src ="'.$serv['img'].'"></img></a></div>';
             $image_0 = $doc->getElementById('carosello_servizi');
             $frammento->appendXML($immagine);
             $image_0->appendChild($frammento);

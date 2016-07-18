@@ -58,7 +58,7 @@ function appendAll(type){
     $.ajax({
         method: "POST", 
         crossDomain: true,
-        url: "php/oracle.php",
+        url: "http://reyze.altervista.org/php/oracle.php",
         data : { type : type , method : 'products_show' },
         success: function(response) {
             console.log("riuscito!");
@@ -77,7 +77,7 @@ function appendMinMax(type,min,max){
     $.ajax({
         method: "POST", 
         crossDomain: true,
-        url: "php/oracle.php",
+        url: "http://reyze.altervista.org/php/oracle.php",
         data : { type : type , min : min , max : max , method : 'products_show_min_max' },
         success: function(response) {
             console.log("riuscito!");

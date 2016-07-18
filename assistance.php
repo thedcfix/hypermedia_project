@@ -3,7 +3,7 @@
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
     $conn = mysqli_connect("localhost", "root", "");
-    mysqli_select_db($conn, "hyp_db");
+    mysqli_select_db($conn, "my_reyze");
     $stringa = "select * from assistenza where ID = '$id'";
     $ris = $conn->query($stringa);
     $row = mysqli_fetch_array($ris);
@@ -21,7 +21,7 @@ if (isset($_GET['id'])) {
         $final_page = preg_replace("#<!--Video-->#", $stringa, $final_page);
         $final_page = preg_replace("#<!--Problema-->#", $row["descrizione"], $final_page);
         $stringa = '<li><a href="assistenza.html">Tutte le assistenze</a></li>
-            <li id="categoria"><a href="assistenza_servizi.php?category=' . $row["categoria_device"] . '">' . $row["categoria_device"] . '</a></li>
+            <li id="categoria"><a href="http://reyze.altervista.org/assistenza_servizi.php?category=' . $row["categoria_device"] . '">' . $row["categoria_device"] . '</a></li>
             <li class="active" id="nome_assistenza">' . $row["servizio"] . '</li>';
         $final_page = preg_replace("#<!--Breadcrumbs-->#", $stringa, $final_page);
         echo $final_page;
