@@ -18,8 +18,8 @@
 
 
         //$bread = $doc->getElementById('immagine');
-       // $frammento->appendXML('<a href="products.html?type='.$row['tipologia'].'">'.$row['tipologia'].'</a>');
-        //$bread->appendChild($frammento);
+       //$frammento->appendXML('<a href="products.html?type='.$row['tipologia'].'">'.$row['tipologia'].'</a>');
+       //$bread->appendChild($frammento);
 
     	$img = $doc->getElementById('immagine');
     	$frammento->appendXML('<img src="'.$row["img"].'"></img><br/>');
@@ -37,7 +37,30 @@
 		$prodotti = "select prodotti.id from servizi join prodotti_servizi on servizi.id = prodotti_servizi.id_servizio join prodotti on prodotti_servizi.id_prodotto = prodotti.id where servizi.id = $id";
 		$res = $conn->query($prodotti);
 
-		// qui bisogna inserire le cose nel carousel
+
+        $prod = mysqli_fetch_array($res);
+        $idProd = $prod['id'];
+        $im = "select img from immagini where disp_id = $idProd";
+        $repl = $conn->query($im);
+        $img = mysqli_fetch_array($repl);
+
+        $immagine = '<div class="item active" id="principal_image"><a href="device.php?id='.$idProd.'"><img src ="'.$img['img'].'" style="width: 45%; height: 45%"></img></a></div>';
+        $image_0 = $doc->getElementById('dispositivi');
+        $frammento->appendXML($immagine);
+        $image_0->appendChild($frammento);
+		
+        while($prod =  mysqli_fetch_array($res)) { 
+            $idProd = $prod['id'];
+            $im = "select img from immagini where disp_id = $idProd";
+            $repl = $conn->query($im);
+            $img = mysqli_fetch_array($repl);
+
+            $immagine = '<div class="item"><a href="device.php?id='.$idProd.'"><img src ="'.$img['img'].'" style="width: 45%; height: 45%"></img></a></div>';
+            $image_0 = $doc->getElementById('dispositivi');
+            $frammento->appendXML($immagine);
+            $image_0->appendChild($frammento);
+
+        }
         
     	echo $doc->saveHTML();
     	libxml_clear_errors();

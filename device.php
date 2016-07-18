@@ -125,14 +125,14 @@ function breadcrumbs($isLocalHost) {
 
         $serv = mysqli_fetch_array($servizi);
         
-        $immagine = '<div class="item active" id="principal_image"><a href="#"><img src ="'.$serv['img'].'"></img></a></div>';
+        $immagine = '<div class="item active" id="principal_image"><a href="servizio.php?id='.$serv['id'].'"><img src ="'.$serv['img'].'"></img></a></div>';
         $image_0 = $doc->getElementById('carosello_servizi');
         $frammento->appendXML($immagine);
         $image_0->appendChild($frammento);
 
         while($serv =  mysqli_fetch_array($servizi)) { 
             
-            $immagine = '<div class="item"><a href="#"><img src ="'.$serv['img'].'"></img></a></div>';
+            $immagine = '<div class="item"><a href="servizio.php?id='.$serv['id'].'"><img src ="'.$serv['img'].'"></img></a></div>';
             $image_0 = $doc->getElementById('carosello_servizi');
             $frammento->appendXML($immagine);
             $image_0->appendChild($frammento);
