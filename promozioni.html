@@ -41,10 +41,56 @@
       <div class="container-fluid">
             <div class="col-sm-4 hidden-xs" style="float:left">
                 <img class="img-responsive" src="img/promozioni_side.png" />
+                            <div class="panel-group">
+               <div class="panel panel panel-default">
+                  <div class="panel-heading">Filtra:
+                     <a data-toggle="collapse" href="#pannello-1"><img align="right" class = "img-responsive" src="img/glyphicons-191-plus-sign.png" width="18" height="18"></a>
+                  </div>
+                  <div id="pannello-1" class="panel-collapse collapse">
+                     <div class="panel-body">
+                        Prezzo:
+                        <div class="panel panel-default">
+                           <div class="panel-body">
+                              <button type="button" class="btn btn-default btn-block 150">Fino a 150€</button>
+                              <button type="button" class="btn btn-default btn-block 150e450">Da 150€ a 450 €</button>
+                              <button type="button" class="btn btn-default btn-block 450">Pi&ugrave; di 450€ </button>
+                           </div>
+                        </div>
+                     </div>
+                     <div align="center"><button type="button" class="btn btn-default resetfiltri">Resetta filtri</button></div>
+                  </div>
+               </div>
             </div>
-            <div class="col-sm-8" id="content">
-               
             </div>
+            <div class="col-xs-12 visible-xs" style="float:left">
+            <div class="panel-group">
+               <div class="panel panel-default">
+                  <div class="panel-heading">
+                     Filtra:
+                     <a data-toggle="collapse" href="#collapse1"><img align="right" class = "img-responsive" src="img/glyphicons-191-plus-sign.png" width="18" height="18"></a>
+                  </div>
+                  <div id="collapse1" class="panel-collapse collapse">
+                     <div class="panel-body">
+                        Prezzo:
+                        <div class="panel panel-default">
+                           <div class="panel-body">
+                              <button type="button" class="btn btn-default btn-block 150">Fino a 150€</button>
+                              <button type="button" class="btn btn-default btn-block 150e450">Da 150€ a 450 €</button>
+                              <button type="button" class="btn btn-default btn-block 450">Pi&ugrave; di 450€ </button>
+                           </div>
+                        </div>
+                     </div>
+                     <div align="center"><button type="button" class="btn btn-default resetfiltri">Resetta filtri</button></div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="col-sm-8 hidden-xs">
+            <div class="row" id="content"></div>
+         </div>
+         <div class="col-xs-12 visible-xs">
+            <div class="row" id="contentxs"></div>
+         </div>
         </div>
   </body>
 </html>
