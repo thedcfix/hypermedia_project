@@ -5,7 +5,7 @@ switch ($_POST['method']) {
         $stringa = dispositiviWithAssistenza($_POST['id']);
         echo $stringa;
         break;
-    
+
     case 'products_show':
         $conn = mysqli_connect("localhost", "root", "");
         mysqli_select_db($conn, "my_reyze");
@@ -68,7 +68,7 @@ function dispositiviWithAssistenza($idAssistenza) {
     return $dispositivi; //Deve essere una stringa formata dal nome dei device separati da ';' " es: iPhone 6S;Samsung S7;che ne so "
 
 }
- 
+
 ?>
 
 <?php
@@ -84,7 +84,7 @@ function productsShow($type,$conn) {
     return $res;
 
 }
- 
+
 ?>
 
 <?php
@@ -108,6 +108,5 @@ function productsShowMinMaxEvid($conn,$min,$max) {
     return $res;
 
 }
- 
-?>
 
+?>

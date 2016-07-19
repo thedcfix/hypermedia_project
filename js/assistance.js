@@ -5,7 +5,7 @@ function documentReady() {
 var id = getUrlParameter("id");
 var risultato;
 $.ajax({
-        method: "POST", 
+        method: "POST",
         crossDomain: true,
         url: "http://reyze.altervista.org/php/oracle.php",
         data : { id : id , method : 'device_assistance' },
