@@ -1,7 +1,7 @@
 <?php
     $conn = mysqli_connect("localhost", "root", "");
-    mysqli_select_db($conn, "my_reyze");    
-    $res = mysqli_query($conn, "select * from prodotti where tipologia = 'Smart life' AND categoria = 'Salute e benessere'");
+    mysqli_select_db($conn, "my_reyze");
+    $res = mysqli_query($conn, "select * from prodotti where categoria = 'Salute e benessere'");
     while($row = mysqli_fetch_array($res)) {
     	$var = $row['id'];
     	$imma = mysqli_query($conn, "select img from immagini where disp_id = $var");
