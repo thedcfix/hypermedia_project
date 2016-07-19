@@ -32,7 +32,7 @@ function breadcrumbs($isLocalHost) {
     array_splice($links,$result,1);
     array_splice($names,$result,1);
     $strings = array();
-    for ($i=0; $i < count($links); $i++) { 
+    for ($i=0; $i < count($links); $i++) {
         $stringa = '<li><a href="'.$links[i].'">'.$names[i].'</a></li>';
         array_push($strings,$stringa);
     }
@@ -44,7 +44,7 @@ function breadcrumbs($isLocalHost) {
 ?>
 
 
-<?php 
+<?php
 
 	if(isset($_GET['id'])) {
 		$id = $_GET['id'];
@@ -79,7 +79,7 @@ function breadcrumbs($isLocalHost) {
 
         $prezzo_dispositivo = $doc->getElementById('prezzo');
         $frammento->appendXML($row['prezzo']);
-        $prezzo_dispositivo->appendChild($frammento); 
+        $prezzo_dispositivo->appendChild($frammento);
 
         $panoramica = $doc->getElementById('panoramica');
         $frammento->appendXML($row['panoramica']);
@@ -106,8 +106,8 @@ function breadcrumbs($isLocalHost) {
         $image_0->appendChild($frammento);
         $int++;
 
-        while($img =  mysqli_fetch_array($imma)) { 
-            
+        while($img =  mysqli_fetch_array($imma)) {
+
             $immagine = '<div class="item"><img src ="'.$img['img'].'"></img></div>';
             $image_0 = $doc->getElementById('carosello');
             $frammento->appendXML($immagine);
@@ -121,18 +121,22 @@ function breadcrumbs($isLocalHost) {
         }
 
         $pulsante_assistenza = $doc->getElementById('bottone_assistenza');
-        $frammento->appendXML('<a href="http://reyze.altervista.org/assistenza_servizi.php?category='.$row['categoria'].'" class="btn btn-primary btn-lg" role="button"><div align="center">Assistenza<br></br><small>Ricevi assistenza per questo dispositivo</small></div></a>');
+				$stringa = $row['categoria'];
+				if($stringa == 'Salute e benessere') {
+					$stringa = "Tv e smart life";
+				}
+        $frammento->appendXML('<a href="http://reyze.altervista.org/assistenza_servizi.php?category='.$stringa.'" class="btn btn-primary btn-lg" role="button"><div align="center">Assistenza<br></br><small>Ricevi assistenza per questo dispositivo</small></div></a>');
         $pulsante_assistenza->appendChild($frammento);
 
         $serv = mysqli_fetch_array($servizi);
-        
+
         $immagine = '<div class="item active" id="principal_image"><a href="http://reyze.altervista.org/servizio.php?id='.$serv['id'].'"><img src ="'.$serv['img'].'"></img></a></div>';
         $image_0 = $doc->getElementById('carosello_servizi');
         $frammento->appendXML($immagine);
         $image_0->appendChild($frammento);
 
-        while($serv =  mysqli_fetch_array($servizi)) { 
-            
+        while($serv =  mysqli_fetch_array($servizi)) {
+
             $immagine = '<div class="item"><a href="http://reyze.altervista.org/servizio.php?id='.$serv['id'].'"><img src ="'.$serv['img'].'"></img></a></div>';
             $image_0 = $doc->getElementById('carosello_servizi');
             $frammento->appendXML($immagine);

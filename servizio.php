@@ -14,12 +14,7 @@ if (isset($_GET['id'])) {
     $doc->loadHTMLFile("servizio_template.html");
     $frammento = $doc->createDocumentFragment();
     $bread = $doc->getElementById('categoria_servizio');
-    if($row["categoria"] == "Casa e famiglia"){
-        $frammento->appendXML('<a href="casafamiglia.html">Casa e famiglia</a>');
-    }
-    else{
-        $frammento->appendXML('<a href="http://reyze.altervista.org/servizio_categoria.php?category=' . $row['categoria'] . '">' . $row['categoria'] . '</a>');
-    }
+    $frammento->appendXML('<a href="http://reyze.altervista.org/servizio_categoria.php?category=' . $row['categoria'] . '">' . $row['categoria'] . '</a>');
     $bread->appendChild($frammento);
     $bread = $doc->getElementById('servizio_attuale');
     $frammento->appendXML($row['nome']);
