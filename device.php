@@ -125,7 +125,7 @@ function breadcrumbs($isLocalHost) {
 				if($stringa == 'Salute e benessere') {
 					$stringa = "Tv e smart life";
 				}
-        $frammento->appendXML('<a href="http://reyze.altervista.org/assistenza_servizi.php?category='.$stringa.'" class="btn btn-primary btn-lg" role="button"><div align="center">Assistenza<br></br><small>Ricevi assistenza per questo dispositivo</small></div></a>');
+        $frammento->appendXML('<a href="http://reyze.altervista.org/assistenza_servizi.php?category='.$stringa.'" class="btn btn-primary" role="button"><div align="center">Assistenza<br></br><small>Ricevi assistenza per questo dispositivo</small></div></a>');
         $pulsante_assistenza->appendChild($frammento);
 
         $serv = mysqli_fetch_array($servizi);
