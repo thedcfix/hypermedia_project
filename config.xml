@@ -3,17 +3,17 @@
 <!-- config.xml reference: https://build.phonegap.com/docs/config-xml -->
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
-        id        = "com.phonegap.bertanidentellahyp"
+        id        = "com.phonegap.cerizzicattaeohype"
         version   = "1.0.0">
 
-    <name>Cerizzi - Cattaneo hype</name>
+    <name>Hypermedia tech project by Cerizzi and Cattaneo</name>
 
     <description>
         App for hypermedia tech project.
     </description>
 
-    <author href="http://bertanidentellahyp.altervista.org" email="fracerri94@yahoo.it">
-        Francesco Cerizzi - Davide Cattaneo
+    <author href="http://reyze.altervista.org" email="fracerri94@gmail.com">
+        Francesco Cerizzi(10433762-807933) - Davide Cattaneo(10433880-808307)
     </author>
 
     <!--
